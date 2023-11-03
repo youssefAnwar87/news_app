@@ -15,16 +15,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    ApiManger.getSources();
     return MaterialApp(
       routes: {
         HomeScreen.routeName :(_) => HomeScreen(),
       },
+      initialRoute: HomeScreen.routeName,
     );
   }
-  void getSources()async{
 
-
-  }
 }
 

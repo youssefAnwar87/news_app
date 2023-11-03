@@ -13,7 +13,7 @@ abstract class ApiManger {
     // print(url);
     Map json = jsonDecode(response.body) as Map;
     SourcesResponse sourcesResponse = SourcesResponse.fromJson(json);
-    if(response.statusCode >= 200 && response.statusCode < 300 && sourcesResponse.sources?.isNotEmpty == null){
+    if(response.statusCode >= 200 && response.statusCode < 300 && sourcesResponse.sources?.isNotEmpty == true){
       return sourcesResponse.sources!;
     }else{
       throw Exception(sourcesResponse.message);
