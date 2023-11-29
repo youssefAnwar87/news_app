@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/Ui/screens/home/tabs/news/news_list/newsList.dart';
 import 'package:news_app/data/api/api_manger.dart';
 import 'package:news_app/model/SourcesResponse.dart';
 
@@ -47,7 +48,7 @@ int currentIndex =0;
           ),
           Expanded(
             child: TabBarView(
-                children: list.map((source) => Container(color: Colors.red,)).toList()
+                children: list.map((source) => NewsList(sourceId: source.id!)).toList()
             ),
           )
         ],
