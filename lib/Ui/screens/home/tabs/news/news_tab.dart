@@ -4,7 +4,9 @@ import 'package:news_app/data/api/api_manger.dart';
 import 'package:news_app/model/SourcesResponse.dart';
 
 class NewsTab extends StatefulWidget {
-  const NewsTab({super.key});
+  final String categoryId;
+
+  const NewsTab({super.key,required this.categoryId});
 
   @override
   State<NewsTab> createState() => _NewsTabState();
@@ -16,7 +18,7 @@ int currentIndex =0;
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ApiManger.getSources(),
+        future: ApiManger.getSources(widget.categoryId),
         builder: (context,snapshot){
           if(snapshot.hasData){
             return buildTabs(snapshot.data!);

@@ -9,8 +9,10 @@ abstract class ApiManger {
   static const String apiKey = "625bf1c648ec406385cbd8af82f7c8a7";
   static const String sourceEndPoint = "/v2/top-headlines/sources";
   static const String articlesEndPoint = "/v2/everything";
-  static Future<List<Sources>> getSources() async {
-    Uri url = Uri.https(baseUrl,sourceEndPoint ,{"apiKey" : apiKey});
+  static Future<List<Sources>> getSources(String category) async {
+    Uri url = Uri.https(baseUrl,sourceEndPoint ,{"apiKey" : apiKey,
+    "category" : category
+    });
     Response response = await get(url);
     // print(url);
     Map json = jsonDecode(response.body) as Map;

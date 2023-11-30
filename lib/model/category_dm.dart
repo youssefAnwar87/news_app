@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class CategoryDm{
         title: "Health", id: "health",
         backgroundColor: Colors.pink, isLeftSided: true),
 
-    CategoryDm(imagePath: "assets/ball.png",
+    CategoryDm(imagePath: "assets/bussines.png",
         title: "Business", id: "business",
         backgroundColor: Colors.orange[900]!, isLeftSided: false),
 
