@@ -10,28 +10,32 @@ class CategoriesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text("Pick your category"),
-        Expanded(
-          child: GridView.builder(
-            itemCount: CategoryDm.categories.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                childAspectRatio: 1.2
-              ),
-              itemBuilder: ( context,index){
-              return InkWell(
-                onTap: (){
-                  onCategoryClick(CategoryDm.categories[index]);
-                },
-                  child: CategoryWidget(categoryDm: CategoryDm.categories[index],));
-              }
-          ),
-        )
-      ],
+    return Container(
+      padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Text("Pick your category"),
+          SizedBox(height: 30,),
+          Expanded(
+            child: GridView.builder(
+              itemCount: CategoryDm.categories.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1.2
+                ),
+                itemBuilder: ( context,index){
+                return InkWell(
+                  onTap: (){
+                    onCategoryClick(CategoryDm.categories[index]);
+                  },
+                    child: CategoryWidget(categoryDm: CategoryDm.categories[index],));
+                }
+            ),
+          )
+        ],
+      ),
     );
   }
 }

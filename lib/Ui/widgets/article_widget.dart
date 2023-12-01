@@ -18,6 +18,7 @@ class ArticleWidget extends StatelessWidget{
             placeholder:(_,__)=> Center(child: CircularProgressIndicator()),
             errorWidget: (_,__,___)=>Icon(Icons.error),
             height:MediaQuery.of(context).size.height*.25,
+            fit: BoxFit.fill,
           ),
           SizedBox(height: 6,),
           Text(article.source?.name??"",style: TextStyle(color: Colors.black),),
