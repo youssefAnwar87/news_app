@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Ui/screens/home/tabs/news/news_list/newsList.dart';
+import 'package:news_app/Ui/screens/home/tabs/news/news_list/news_tab_view_model.dart';
+import 'package:news_app/Ui/widgets/ErrorView.dart';
+import 'package:news_app/Ui/widgets/loading_widget.dart';
 import 'package:news_app/data/api/api_manger.dart';
 import 'package:news_app/model/SourcesResponse.dart';
+import 'package:provider/provider.dart';
 
 class NewsTab extends StatefulWidget {
   final String categoryId;
@@ -14,21 +18,35 @@ class NewsTab extends StatefulWidget {
 
 class _NewsTabState extends State<NewsTab> {
 int currentIndex =0;
+ NewsTabViewModel viewModel = NewsTabViewModel();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      viewModel.getSources(widget.categoryId);
 
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: ApiManger.getSources(widget.categoryId),
-        builder: (context,snapshot){
-          if(snapshot.hasData){
-            return buildTabs(snapshot.data!);
-          }else if (snapshot.hasError){
-            return Text(snapshot.error.toString());
+  return ChangeNotifierProvider(
+      create: (_)=> viewModel,
+      child:Consumer<NewsTabViewModel>(
+        builder: (context,viewModel,_){
+          Widget currentView;
+          if(viewModel.isLoading){
+            currentView = LoadingWidegt();
+          }else if(viewModel.sources.isNotEmpty){
+            currentView = buildTabs(viewModel.sources);
           }else{
-            return Center(child: CircularProgressIndicator(),);
+            currentView = ErrorView(message: viewModel.errorText??"");
           }
-        }
-    );
+          return currentView;
+        },
+      ) ,
+  );
+
   }
 
   Widget buildTabs(List<Sources> list) {
