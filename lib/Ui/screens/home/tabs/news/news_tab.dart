@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Ui/screens/home/tabs/news/news_list/newsList.dart';
-import 'package:news_app/Ui/screens/home/tabs/news/news_list/news_tab_view_model.dart';
+import 'package:news_app/Ui/screens/home/tabs/news/news_tab_view_model.dart';
 import 'package:news_app/Ui/widgets/ErrorView.dart';
 import 'package:news_app/Ui/widgets/loading_widget.dart';
-import 'package:news_app/data/api/api_manger.dart';
-import 'package:news_app/model/SourcesResponse.dart';
+import 'package:news_app/data/repos/news_repos/data_sources/online_data_source.dart';
+import 'package:news_app/data/model/SourcesResponse.dart';
 import 'package:provider/provider.dart';
 
 class NewsTab extends StatefulWidget {
@@ -38,8 +38,12 @@ int currentIndex =0;
           if(viewModel.isLoading){
             currentView = LoadingWidegt();
           }else if(viewModel.sources.isNotEmpty){
+            print('jksjaksa');
+
             currentView = buildTabs(viewModel.sources);
           }else{
+            print('error');
+
             currentView = ErrorView(message: viewModel.errorText??"");
           }
           return currentView;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/Ui/screens/home/tabs/categories/category_widget.dart';
-import 'package:news_app/model/category_dm.dart';
+import 'package:news_app/data/model/category_dm.dart';
 
 class CategoriesTab extends StatelessWidget {
   final Function(CategoryDm) onCategoryClick;

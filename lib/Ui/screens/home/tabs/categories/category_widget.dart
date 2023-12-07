@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/data/model/category_dm.dart';
 
-import '../../../../../model/category_dm.dart';
 
 class CategoryWidget extends StatelessWidget {
   CategoryDm categoryDm;

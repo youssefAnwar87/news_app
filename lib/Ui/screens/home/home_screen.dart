@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/Ui/screens/home/tabs/categories/categories_tab.dart';
 import 'package:news_app/Ui/screens/home/tabs/news/news_tab.dart';
 import 'package:news_app/Ui/screens/home/tabs/settings/settingsTab.dart';
-import 'package:news_app/model/category_dm.dart';
+import 'package:news_app/data/model/category_dm.dart';
 
 class HomeScreen extends StatefulWidget{
   static const String  routeName ="Home";
